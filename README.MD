@@ -58,9 +58,6 @@ npm run dev
 Video:
 [https://drive.google.com/file/d/1pU8lwwgwqTC0zZUbqRc79txt0ddbDRPk/view?usp=sharing]
 
-Live Deployment:
-[Paste URL]
-
 ## Team
 
 [sujay renukunta]
