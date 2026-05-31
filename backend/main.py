@@ -27,7 +27,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://ghostscout.vercel.app"
+        "https://ghostscout-aj08ulm3p-sujayrenukunta83-arts-projects.vercel.app/"
     ],
     allow_credentials=True,
     allow_methods=["*"],
