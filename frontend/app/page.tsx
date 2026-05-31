@@ -54,7 +54,7 @@ export default function Home() {
     setIsRefreshing(true);
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/refresh-jobs",
+        "${process.env.NEXT_PUBLIC_API_URL}/refresh-jobs",
         {
           method: "POST"
         }
@@ -64,7 +64,7 @@ export default function Home() {
       showToast(`Successfully synced and loaded ${data.jobs_loaded} job roles!`, "success");
       console.log(targetRole);
       const jobsResponse = await fetch(
-        `http://127.0.0.1:8000/filtered-jobs?target_role=${encodeURIComponent(targetRole)}`
+        `${process.env.NEXT_PUBLIC_API_URL}/filtered-jobs?target_role=${encodeURIComponent(targetRole)}`
       );
 
       const updatedJobs = await jobsResponse.json();
@@ -107,7 +107,7 @@ export default function Home() {
       formData.append("file", file);
 
       const response = await fetch(
-        "http://127.0.0.1:8000/upload-resume",
+        "${process.env.NEXT_PUBLIC_API_URL}/upload-resume",
         {
           method: "POST",
           body: formData,
@@ -120,7 +120,7 @@ export default function Home() {
 
       // Jobs
       const jobsResponse = await fetch(
-        `http://127.0.0.1:8000/filtered-jobs?target_role=${targetRole}`
+        `${process.env.NEXT_PUBLIC_API_URL}/filtered-jobs?target_role=${targetRole}`
       );
 
       const updatedJobs = await jobsResponse.json();
@@ -129,35 +129,35 @@ export default function Home() {
 
       // Insights
       const insightsResponse = await fetch(
-        "http://127.0.0.1:8000/career-insights"
+        "${process.env.NEXT_PUBLIC_API_URL}/career-insights"
       );
       const insights = await insightsResponse.json();
       setCareerInsights(insights);
 
       // Score
       const scoreResponse = await fetch(
-        "http://127.0.0.1:8000/market-score"
+        "${process.env.NEXT_PUBLIC_API_URL}/market-score"
       );
       const scoreData = await scoreResponse.json();
       setMarketScore(scoreData.score);
 
       // Resources
       const resourceResponse = await fetch(
-        "http://127.0.0.1:8000/learning-resources"
+        "${process.env.NEXT_PUBLIC_API_URL}/learning-resources"
       );
       const resourceData = await resourceResponse.json();
       setResources(resourceData);
 
       // Skill Gaps
       const skillResponse = await fetch(
-        "http://127.0.0.1:8000/skill-gaps"
+        "${process.env.NEXT_PUBLIC_API_URL}/skill-gaps"
       );
       const skillData = await skillResponse.json();
       setSkillGaps(skillData);
 
       // Roadmap
       const roadmapResponse = await fetch(
-        `http://127.0.0.1:8000/roadmap?target_role=${encodeURIComponent(targetRole)}`
+        `${process.env.NEXT_PUBLIC_API_URL}/roadmap?target_role=${encodeURIComponent(targetRole)}`
       );
       const roadmapData = await roadmapResponse.json();
       setRoadmap(roadmapData.roadmap);
