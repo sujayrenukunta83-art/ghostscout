@@ -54,7 +54,7 @@ export default function Home() {
     setIsRefreshing(true);
     try {
       const response = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/refresh-jobs',
+        `${process.env.NEXT_PUBLIC_API_URL}/refresh-jobs`,
         {
           method: "POST"
         }
@@ -107,7 +107,7 @@ export default function Home() {
       formData.append("file", file);
 
       const response = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/upload-resume',
+        `${process.env.NEXT_PUBLIC_API_URL}/upload-resume`,
         {
           method: "POST",
           body: formData,
@@ -129,28 +129,28 @@ export default function Home() {
 
       // Insights
       const insightsResponse = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/career-insights'
+        `${process.env.NEXT_PUBLIC_API_URL}/career-insights`
       );
       const insights = await insightsResponse.json();
       setCareerInsights(insights);
 
       // Score
       const scoreResponse = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/market-score'
+        `${process.env.NEXT_PUBLIC_API_URL}/market-score`
       );
       const scoreData = await scoreResponse.json();
       setMarketScore(scoreData.score);
 
       // Resources
       const resourceResponse = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/learning-resources'
+        `${process.env.NEXT_PUBLIC_API_URL}/learning-resources`
       );
       const resourceData = await resourceResponse.json();
       setResources(resourceData);
 
       // Skill Gaps
       const skillResponse = await fetch(
-        '${process.env.NEXT_PUBLIC_API_URL}/skill-gaps'
+        `${process.env.NEXT_PUBLIC_API_URL}/skill-gaps`
       );
       const skillData = await skillResponse.json();
       setSkillGaps(skillData);
